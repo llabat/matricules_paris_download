@@ -1,0 +1,4 @@
+Suggested improvements:
+- headless mode
+- use wget?
+- collect download links as opposed to clinking on them
