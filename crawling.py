@@ -13,7 +13,7 @@ from selenium.common.exceptions import WebDriverException
 from selenium.common.exceptions import NoSuchElementException
 
 
-from const import DRIVERPATH, WORKERDIR
+from const import DRIVERPATH, WORKERDIR, OUTPUTDIR
 from utils import DidntCatchThemAll
 
 class Downloading_Spider():
@@ -34,7 +34,7 @@ class Downloading_Spider():
         options = webdriver.ChromeOptions()
         prefs = {"download.default_directory": self.workerdir}
         options.add_experimental_option("prefs", prefs)
-        self.driver = webdriver.Chrome(DRIVERPATH, chrome_options = options)
+        self.driver = webdriver.Chrome(executable_path=DRIVERPATH, chrome_options = options)
         
         self.main()
         
@@ -92,11 +92,11 @@ class Downloading_Spider():
         
     def main(self):
         for index, row in self.df.iterrows():
-            fichedir = "/Users/leolabat/Desktop/tirage/" + str(row["id"])
+            fichedir =  OUTPUTDIR + str(row["labat_id"])
             os.mkdir(fichedir)
-            try : self.collect_all(row["lien"],row["id"])     
+            try : self.collect_all(row["Lien"],row["labat_id"])     
             except DidntCatchThemAll :
-                self.failed.append(row["id"])
+                self.failed.append(row["labat_id"])
                 self.abort()
                 continue
             try:
@@ -104,7 +104,7 @@ class Downloading_Spider():
                 dlist = re.findall("\d+",title.text)
             except:
                 dlist = [None]
-            self.matricule_table.append([row["id"],dlist[0],self.current_ntotal])
+            self.matricule_table.append([row["labat_id"],dlist[0],self.current_ntotal])
             for filename in os.listdir(self.workerdir):
                 if filename.endswith(".jpg"):
                     shutil.move(self.workerdir + "/" + filename, fichedir + "/" + filename)
@@ -133,7 +133,7 @@ class LittleSpider():
     def main(self):
         
         for row in self.df.iterrows():
-            self.driver.get(row[1]["lien"])
+            self.driver.get(row[1]["Lien"])
             try:
                 title = self.driver.find_element("css selector",".titre")
                 dlist = re.findall("\d+",title.text)
