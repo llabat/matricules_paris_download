@@ -18,7 +18,7 @@ from utils import DidntCatchThemAll
 
 class Downloading_Spider():
     
-    def __init__(self, df):
+    def __init__(self, DRIVERPATH, WORKERDIR, OUTPUTDIR, df):
         
         self.df = df
         self.prev_url = ''

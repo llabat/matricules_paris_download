@@ -24,7 +24,7 @@ from crawling import Downloading_Spider, LittleSpider
 
 class Parallel_Downloader():
     
-    def __init__(self, nworkers, df):
+    def __init__(self, DRIVERPATH, WORKERDIR, OUTPUTDIR, nworkers, df):
         
         self.start_time = time.time()
         self.nworkers = nworkers
@@ -33,12 +33,16 @@ class Parallel_Downloader():
         
         self.spider_coffin = []
 
+        self.DRIVERPATH = DRIVERPATH
+        self.WORKERDIR = WORKERDIR
+        self.OUTPUTDIR = OUTPUTDIR
+
         self.main()
         
     def main(self):
         
         with ThreadPoolExecutor(max_workers=self.nworkers) as executor:
-            self.spider_coffin = executor.map(Downloading_Spider, self.files)
+            self.spider_coffin = executor.map(lambda file_chunk: Downloading_Spider(self.DRIVERPATH, self.WORKERDIR, self.OUTPUTDIR, file_chunk), self.files)
         
         for deads in self.spider_coffin:
             self.failed += deads.failed        
