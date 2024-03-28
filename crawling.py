@@ -32,9 +32,14 @@ class Downloading_Spider():
         os.mkdir(self.workerdir)
         
         options = webdriver.ChromeOptions()
+        options = webdriver.ChromeOptions()
         prefs = {"download.default_directory": self.workerdir}
         options.add_experimental_option("prefs", prefs)
-        self.driver = webdriver.Chrome(executable_path=DRIVERPATH, chrome_options = options)
+        options.add_argument("--headless")  # Enable headless mode
+        options.add_argument("--disable-gpu")  # Optional, but recommended
+        options.add_argument("--no-sandbox")  # Bypass OS security model, OPTIONAL
+        options.add_argument("--disable-dev-shm-usage")  # overcome limited resource problems, OPTIONAL
+        self.driver = webdriver.Chrome(executable_path=DRIVERPATH, chrome_options=options)
         
         self.main()
         

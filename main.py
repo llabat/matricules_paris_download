@@ -43,6 +43,6 @@ else:
 
 df = pd.read_csv(CSVFILE)
 
-spiders = Parallel_Downloader(DRIVERPATH, WORKERDIR, OUTPUTDIR, 5, df[:5])
+spiders = Parallel_Downloader(DRIVERPATH, WORKERDIR, OUTPUTDIR, 10, df[:100])
 
 #spider = Downloading_Spider(DRIVERPATH, WORKERDIR, OUTPUTDIR, df[:5])
