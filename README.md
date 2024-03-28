@@ -37,7 +37,7 @@ The script accepts the following command-line arguments to customize its executi
 After adjusting the command-line arguments to fit your setup, you can run the script using a command similar to the following:
 
 ```sh
-python your_script_name.py --driverpath /custom/path/to/chromedriver --workdir /custom/workdir --outputdir /custom/outputdir --csvpath /custom/path/to/csvfile --nworkers 4
+python main.py --driverpath /custom/path/to/chromedriver --workdir /custom/workdir --outputdir /custom/outputdir --csvpath /custom/path/to/csvfile --nworkers 4
 ```
 
 ## Important Notes
