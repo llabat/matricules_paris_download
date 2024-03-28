@@ -43,6 +43,6 @@ python main.py --driverpath /custom/path/to/chromedriver --workdir /custom/workd
 ## Important Notes
 
 - Ensure the ChromeDriver version is compatible with your Chrome browser version.
-- The script assumes the CSV file is correctly formatted and contains all the necessary information for downloads.
+- The script assumes the CSV file is correctly formatted (with "Lien" & "labat_id" columns) and and contains all the necessary information for downloads.
 - Verify the output directory after running the script to ensure all files have been downloaded as expected.
 - For more information or troubleshooting, please refer to the script's detailed documentation or the issue tracker on the project's repository page.
