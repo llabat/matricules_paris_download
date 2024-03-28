@@ -13,7 +13,7 @@ import shutil
 import tqdm
 import random
 from concurrent.futures import ThreadPoolExecutor
-from ipywidgets import FloatProgress
+#from ipywidgets import FloatProgress
 from selenium.webdriver.support.ui import Select
 import math
 import re
