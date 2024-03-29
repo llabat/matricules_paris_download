@@ -4,7 +4,7 @@ The Paris Downloader script is designed to facilitate the parallel downloading o
 
 ## Prerequisites
 
-- Python 3.6 or higher
+- Python 3.7 or higher
 - ChromeDriver compatible with your Chrome browser version
 - Required Python packages: `pandas`, `selenium` (These dependencies should be installed in your Python environment.)
 
